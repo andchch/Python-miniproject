@@ -5,6 +5,8 @@ import plotly.graph_objects as go
 from jinja2 import Template
 
 # Данные и токен для использования
+Name = ''
+Group = ''
 taigaPjName = ''
 taigaUsername = ''
 mEmail = ''
@@ -177,16 +179,16 @@ def getTaigaData():
 
 if __name__ == '__main__':
     templatePath = 'templates/base.html'
-    pagePath = 'aimartinich.html'
+    pagePath = 'outputpage.html'
 
     gitData = getGitlabData(eEmail, token)
-    taigaData = getTaigaData(mEmail, token)
+    taigaData = getTaigaData()
     zulipData = getZulipData(mEmail, token)
     jitsiData = getJitsiData(eEmail, token)
 
     params = {'creationTime': currentDate,
-              'name': "Андрей Мартинич",
-              'group': "БИВ213",
+              'name': Name,
+              'group': Group,
               'gitlab_commits_count': gitData[0],
               'gitlab_graph_line': gitData[1],
               'gitlab_graph_bar': gitData[2],
